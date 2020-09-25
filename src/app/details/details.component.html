@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <style>
+        </style>
+    </head>
+    <body ng-app="">
+          <!-- Navigation tabs starts-->
+        <div class="tab" >
+            <button class="tablinks" style="margin-top: 172px;" (click)="openprf()" id="defaultOpen"><span>Profile</span> </button>
+            <button class="tablinks" (click)="openpst()">Posts</button>
+            <button class="tablinks"  (click)="opengal()">Gallery</button>
+            <button class="tablinks" (click)="opentodo()">Todo</button>
+        </div>
+         <!-- Navigation tabs ends-->
+        <div class="card"  style="margin-top: 25px;color: black;
+            width: 76%;
+            height: 699px;
+            margin-left: 279px;
+            background-color: white;
+            border-radius: 29px;
+            border: none;">
+             <!--Profile Header -->
+            <div class="card-header" >
+                <div class="row">
+                    <div class="col-sm-8">
+                        <b>{{title}}</b>
+                    </div>
+                     <!-- Profile account and Logout button on right corner starts-->
+                    <div>
+                        <div class="btn-group">
+                            <button type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none;
+                                background: white;">
+                            <img src={{prfdt.profilepicture}}  class="avatar" style="width: 36px;
+                                height: 33px;">&nbsp; <b>{{prfdt.name}}</b>
+                            </button>
+                            <div class="dropdown-menu" style="  top: 20%;
+                                position: fixed;
+                                width: 285px;
+                                height: 350px;
+                                border-radius: 30px;
+                                background-color: white;
+                                margin-right: 70%;
+                                filter: drop-shadow(0px 0px 10px rgb(122, 117, 117));">
+                                <div class="dropdown-item" style="height: 24%;
+                                    width: 93%;
+                                    margin-left: 10px;">  <img style="width: 35%;
+                                    height: 99%;
+                                    margin-left: 53px;
+                                    border-radius: 50%;" src={{prfdt.profilepicture}}   ></div>
+                                <div class="dropdown-item" style="text-align: center;text-align: center;
+                                    font-family: sans-serif;
+                                    font-size: 15px;"><b>{{prfdt.name}}</b></div>
+                                <div class="dropdown-item" style="text-align: center;    color: #8b949d;
+                                    font-size: 14px;">{{prfdt.email}}</div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item" class="scrollbar" id="style-2">
+                                    <ul class="list-group" class="overflow-auto" style="    margin-left: -41px;">
+                                        <li class="list-group-item" style="    text-align: start;" *ngFor=" let x of prfls.users">
+                                            <a  > 
+                                            <img src={{x.profilepicture}}  class="avatar" >
+                                            {{x.name}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a class="dropdown-item" routerLink="/profile"><button class="button button2">Sign Out</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile account and Logout button on right corner ends-->
+                </div>
+            </div>
+             <!-- Profile Header ends-->
+
+               <!-- Profile Details body starts-->
+            <div class="card-body"  *ngIf="profilediv">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card w-55" style="margin-left: -4px;
+                            height: 64%;
+                            border-top: none;
+                            border-left: none;">
+                            <div class="card-body">
+                                <img src={{prfdt.profilepicture}}  class="profilepic" > 
+                                <p> <b style="margin-left: 105px;margin-top: 20px;">{{prfdt.name}}</b></p>
+                                <table style="letter-spacing:1px;font-family: sans-serif; margin-left: 25px;">
+                                    <tr style="    height: 43px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;"> Username : &nbsp;</td>
+                                        <td>  <b>{{prfdt.username}}</b></td>
+                                    </tr>
+                                    <tr style="height: 40px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;">Email:&nbsp;</td>
+                                        <td><b>{{prfdt.email}}</b></td>
+                                    </tr>
+                                    <tr style="    height: 40px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;">Phone :&nbsp;</td>
+                                        <td><b>{{prfdt.phone}}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;">Website :&nbsp;</td>
+                                        <td><b>{{prfdt.website}}</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card w-55" style="margin-left: -28px;
+                            height: 36%;
+                            border-top: none;
+                            border-left: none;">
+                            <div class="card-body">
+                                <table style="letter-spacing:1px;">
+                                    <tr>
+                                        <td>
+                                            <p><b style="margin-left: 85px;margin-top: 20px;text-align: right;
+                                                color: #ab9898;
+                                                font-size: large;">Company</b></p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 40px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;">Name : &nbsp;</td>
+                                        <td ><b>{{prfdt.company.name}}</b></td>
+                                    </tr>
+                                    <tr  style="height: 40px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;">  Catchphrase:&nbsp;</td>
+                                        <td> <b>{{prfdt.company.catchPhrase}}</b></td>
+                                    </tr>
+                                    <tr  style="height: 40px;">
+                                        <td style="    text-align: right;
+                                            color: #ab9898;
+                                            font-size: large;"> bs :&nbsp;</td>
+                                        <td>  <b>{{prfdt.company.bs}}</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <table style="letter-spacing:1px;">
+                            <tr>
+                                <td style="    text-align: right;
+                                    color: #ab9898;
+                                    font-size: 20px;">
+                                    Address 
+                                </td>
+                            </tr>
+                            <tr  style="height: 40px;">
+                                <td style="    text-align: right;
+                                    color: #ab9898;
+                                    font-size: large;"> Street :&nbsp;</td>
+                                <td>  <b>{{prfdt.address.street}}</b></td>
+                            </tr>
+                            <tr  style="height: 40px;">
+                                <td style="    text-align: right;
+                                    color: #ab9898;
+                                    font-size: large;">Suite :&nbsp;</td>
+                                <td> <b>{{prfdt.address.suite}}</b></td>
+                            </tr>
+                            <tr  style="height: 40px;">
+                                <td style="    text-align: right;
+                                    color: #ab9898;
+                                    font-size: large;">City :&nbsp;</td>
+                                <td> <b>{{prfdt.address.city}}</b></td>
+                            </tr>
+                            <tr  style="height: 40px;">
+                                <td style="    text-align: right;
+                                    color: #ab9898;
+                                    font-size: large;">Zip-Code :&nbsp;</td>
+                                <td> <b>{{prfdt.address.zipcode}}</b></td>
+                            </tr>
+                            <tr></tr>
+                        </table>
+                        <img src="../../assets/geo.jpg"  style="    border-radius: 24px;
+                            width: 108%;
+                            height: 44%;" > 
+                        <div>
+                            <p     style="text-align: end;
+                                font-size: small;
+                                color: #8c9196;">Lat.<b style="color: black;
+                                font-size: small;">{{prfdt.address.geo.lat}}</b> &nbsp; &nbsp; Long. <b style="color: black;
+                                font-size: small;">{{prfdt.address.geo.lng}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Profile Details body ends-->
+            <!-- Post-gallery-todo body starts-->
+            <div class="card-body" *ngIf="postdiv">
+                <p class="other">Coming Soon</p>
+            </div>
+            <div class="card-body"  *ngIf="gallerydiv">
+                <p class="other">Coming Soon</p>
+            </div>
+            <div class="card-body"  *ngIf="tododiv">
+                <p class="other">Coming Soon</p>
+            </div>
+             <!-- Post-gallery-todo body ends-->
+              <!-- Chat box starts-->
+            <div class="card-footer" >
+                <div class="chat-popup" id="myForm">
+                    <div class="window-chat">
+                        <div class="header"> 
+                            <img src={{prfls.users[0].profilepicture}}  class="avatar" style="width: 36px;
+                                height: 33px;">&nbsp; <b>{{prfls.users[0].name}}</b><button  class="btn cancel" onclick="closeForm()" style="color: white;"><i class="fa fa-angle-down" style="font-size:24px"></i>&nbsp; &nbsp;<i class="fa fa-close"></i></button>
+                        </div>
+                        <div class="chats">
+                            <span class="u1 chat">Lorem ipsum dolor sit amet , consectetur</span>
+                            <span class="u1 chat">Lorem ipsum dolor sit</span>
+                            <span class="u2 chat">Lorem ipsum dolor</span>
+                            <span class="u2 chat">Lorem ipsum </span>
+                        </div>
+                        <div class="new-chat" >
+                            <textarea  style=" width: 94%; border: none;"></textarea>
+                            <i class="fa fa-chevron-right" style="font-size:20px  ;  color: #00afff;
+                                float: right;
+                                margin-top: 1%;">
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group dropdown" style="width: 110%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="chat-header dropdown-toggle"  (click)="hidediv1()" ng-show="!isChatOpen">
+                        <p class="chat-header-title">
+                            <i class='far fa-comment-alt' style='    font-size: 24px;
+                                margin-top: 7px;
+                                margin-left: 23px;'></i>&nbsp;
+                            Chats <i class="fa fa-angle-up" style="    font-size: 24px;
+                                margin-left: 34%;"></i>
+                        </p>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="chat-header" (click)="hidediv1()" >
+                            <p class="chat-header-title">
+                                <i class='far fa-comment-alt' style='    font-size: 24px;
+                                    margin-top: 7px;
+                                    margin-left: 23px;'></i>&nbsp;
+                                Chats <i class="fa fa-angle-down" style="    font-size: 24px;
+                                    margin-left: 34%;"></i>
+                            </p>
+                        </div>
+                        <ul class="list-group"  style="width: 247px;
+                            height: 385px;">
+                            <div class="dropdown-item" class="scrollbar" id="style-2" style="    height: 109%;">
+                                <li class="list-group-item" style="    text-align: start;" *ngFor=" let x of prfls.users">
+                                    <button class="open-button" onclick="openForm()">
+                                    <img src={{x.profilepicture}}  class="avatar" >
+                                    {{x.name}} 
+                                    </button>
+                                    <span class="status"></span>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <!-- Chat box ends-->
+        </div>
+     
+    </body>
+</html>
